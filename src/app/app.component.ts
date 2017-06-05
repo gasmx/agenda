@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ContatoModel } from './modelos/contato-model';
+import { ContatosDataBaseService } from './servicos/contatos-data-base.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+
+  contatoclicado: ContatoModel;
+  
+  constructor(private dataBaseService: ContatosDataBaseService){}
+
+  enviarDetalhe(id): void {
+    this.contatoclicado = this.dataBaseService.getContato(id);
+  }
 }

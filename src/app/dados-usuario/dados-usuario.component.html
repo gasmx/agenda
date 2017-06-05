@@ -1,0 +1,67 @@
+<h3 class="container col-6">Dados do contato</h3>
+
+<div class="card container col-6">
+  <form class="card-block" (ngSubmit)="enviarDados()" *ngIf="!enviado" #formulario="ngForm">
+    <div class="form-group" [class.had-success]="nome.valid" [class.had-danger]="nome.invalid">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" [class.form-control-success]="nome.valid" #nome="ngModel" id="nome" [(ngModel)]="_nome"
+        name="nome" placeholder="Digite o nome" required>
+      <div [hidden]="nome.valid || nome.pristine">
+        <small [ngClass]="{'form-control-danger': 'nome.invalid || nome.dirty', 'form-control-feedback': 'nome.invalid || nome.dirty'}">
+          O nome é um campo obrigatório
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group" [class.had-success]="telefone.valid" [class.had-danger]="telefone.invalid">
+      <label for="telefone">Telefone</label>
+      <input type="text" #telefone="ngModel" class="form-control" [class.form-control-success]="telefone.valid" id="telefone" [(ngModel)]="_telefone"
+        name="telefone" placeholder="Digite o telefone" required>
+      <div [hidden]="telefone.valid || telefone.pristine">
+        <small [ngClass]="{'form-control-danger': 'telefone.invalid || telefone.dirty', 'form-control-feedback': 'telefone.invalid || telefone.dirty'}">
+          O telefone é um campo obrigatório
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" #email="ngModel" id="email" [(ngModel)]="_email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label for="tipo">Tipo de contato</label>
+      <select id="tipo" [(ngModel)]="_tipo" #tipo="ngModel" name="tipo">
+        <option class="form-control" *ngFor="let item of tipos" [value]="item">{{ item }}</option>
+      </select>
+    </div>
+
+    <button class="btn" type="submit" [disabled]="formulario.invalid">Cadastrar</button>
+  </form>
+</div>
+
+<div class="card card-block container col-6" *ngIf="enviado">
+  <div>
+    <h2>Dados enviados!</h2>
+  </div>
+
+  <div>
+    <p>Nome do contato: <strong>{{ _nome }}</strong></p>
+  </div>
+
+  <div>
+    <p>Telefone do contato: <strong>{{ _telefone }}</strong></p>
+  </div>
+
+  <div>
+    <p>Email do contato: <strong>{{ _email }}</strong></p>
+  </div>
+
+  <div>
+    <p>Tipo do contato: <strong>{{ _tipo }}</strong></p>
+  </div>
+
+  <button (click)="voltar()">Voltar</button>
+</div>
+
+<div (enviarContato)="testar($event)"></div>

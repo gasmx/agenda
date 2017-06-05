@@ -4,17 +4,24 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { DadosUsuarioComponent } from './dados-usuario/dados-usuario.component';
+import { DetalheUsuarioComponent } from './detalhe-usuario/detalhe-usuario.component';
+import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
+import { ContatosDataBaseService } from './servicos/contatos-data-base.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DadosUsuarioComponent,
+    DetalheUsuarioComponent,
+    ListaUsuarioComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ContatosDataBaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
