@@ -1,6 +1,7 @@
 {
-  "name": "projeto-final",
-  "version": "0.0.0",
+  "name": "agenda-contatos",
+  "version": "0.0.1",
+  "description": "Agenda de contatos utilizando componentes do Angular criados com o auxílio da angular-cli",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
